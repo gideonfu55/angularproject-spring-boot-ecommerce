@@ -2,6 +2,8 @@ package com.learnfullstack.springbootecommerce.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +32,7 @@ public class Country {
   private String name;
 
   @OneToMany(mappedBy = "country")
+  @JsonIgnore
   private List<State> states;
   
 }
