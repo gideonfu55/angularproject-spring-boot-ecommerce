@@ -8,6 +8,6 @@ import com.learnfullstack.springbootecommerce.entity.Country;
 
 @CrossOrigin("http://localhost:4200")
 @RepositoryRestResource(collectionResourceRel = "countries", path = "countries")
-public interface CountryRepository extends JpaRepository<Country, Long> {
+public interface CountryRepository extends JpaRepository<Country, Integer> {
   
 }
