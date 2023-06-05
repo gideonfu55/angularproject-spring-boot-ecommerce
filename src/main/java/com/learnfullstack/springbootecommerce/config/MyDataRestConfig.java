@@ -9,6 +9,7 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.util.pattern.PathPattern;
 
 import com.learnfullstack.springbootecommerce.entity.Country;
 import com.learnfullstack.springbootecommerce.entity.Product;
@@ -41,8 +42,11 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     disableHttpMethods(Country.class, config, theUnsupportedActions);
     disableHttpMethods(State.class, config, theUnsupportedActions);
 
-    // call an internal helper method
+    // call an internal helper method:
     exposeIds(config);
+
+    // configure cors mapping:
+    cors.addMapping("api/**").allowedOrigins("http://localhost:4200");
   }
 
   private void disableHttpMethods(Class<?> theClass, RepositoryRestConfiguration config, HttpMethod[] theUnsupportedActions) {
