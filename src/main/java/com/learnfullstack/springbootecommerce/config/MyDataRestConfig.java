@@ -12,6 +12,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.learnfullstack.springbootecommerce.entity.Country;
+import com.learnfullstack.springbootecommerce.entity.Order;
 import com.learnfullstack.springbootecommerce.entity.Product;
 import com.learnfullstack.springbootecommerce.entity.ProductCategory;
 import com.learnfullstack.springbootecommerce.entity.State;
@@ -36,15 +37,18 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
     HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
 
-    // disable HTTP methods for Product: PUT, POST and DELETE (just read-only for now):
+    // disable HTTP methods - PUT, POST and DELETE for Product :
     disableHttpMethods(Product.class, config, theUnsupportedActions);
 
-    // disable HTTP methods for ProductCategory: PUT, POST and DELETE (just read-only for now):
+    // disable HTTP methods - PUT, POST and DELETE for ProductCategory:
     disableHttpMethods(ProductCategory.class, config, theUnsupportedActions);
 
     // disable HTTP methods - for country and state:
     disableHttpMethods(Country.class, config, theUnsupportedActions);
     disableHttpMethods(State.class, config, theUnsupportedActions);
+
+    // disable HTTP methods - order:
+    disableHttpMethods(Order.class, config, theUnsupportedActions);
 
     // call an internal helper method:
     exposeIds(config);
